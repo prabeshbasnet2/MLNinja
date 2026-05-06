@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AWSPage from './pages/AWSPage';
 import MLPage from './pages/MLPage';
 import TerraformPage from './pages/TerraformPage';
@@ -12,6 +12,14 @@ const nav = [
 
 function App() {
   const [page, setPage] = useState('ml');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
 
   return (
     <div className="app">
@@ -33,6 +41,9 @@ function App() {
               {n.label}
             </button>
           ))}
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+          </button>
         </nav>
       </header>
 
