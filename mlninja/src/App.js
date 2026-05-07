@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import AWSPage from './pages/AWSPage';
 import MLPage from './pages/MLPage';
 import TerraformPage from './pages/TerraformPage';
+import DataSciencePage from './pages/DataSciencePage';
 import './App.css';
 
 const nav = [
-  { id: 'aws',       label: '☁️ AWS',       },
-  { id: 'ml',        label: '🤖 ML',        },
-  { id: 'terraform', label: '🏗️ Terraform', },
+  { id: 'aws',          label: '☁️ AWS',          },
+  { id: 'ml',           label: '🤖 ML Concepts',   },
+  { id: 'datascience',  label: '📊 Data Science',  },
+  { id: 'terraform',    label: '🏗️ Terraform',    },
 ];
 
 function App() {
@@ -48,9 +50,10 @@ function App() {
       </header>
 
       <main>
-        {page === 'aws'       && <AWSPage />}
-        {page === 'ml'        && <MLPage />}
-        {page === 'terraform' && <TerraformPage />}
+        {page === 'aws'         && <AWSPage />}
+        {page === 'ml'          && <MLPage />}
+        {page === 'datascience' && <DataSciencePage />}
+        {page === 'terraform'   && <TerraformPage />}
       </main>
     </div>
   );
